@@ -1,0 +1,5 @@
+% load fisheriris data
+% now species contain fishe names (satosa)
+% and meas contain it's features
+
+	load fisheriris
