@@ -31,8 +31,7 @@ function [labels]=sort_fish(fishes,features)
 				plot(features(labels==1,fe_1),features(labels==1,fe_2),'*g');
 				hold on
 				plot(features(labels==2,fe_1),features(labels==2,fe_2),'*r');
-				hold on
-				plot(features(labels==3,fe_1),features(labels==3,fe_2),'*b');
+
 			end
 		end
 	end
