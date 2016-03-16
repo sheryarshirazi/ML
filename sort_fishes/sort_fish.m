@@ -1,4 +1,4 @@
-function [labels]=sort_fish(fishes,features,fish1,fish2,feature1,feature2)
+function [labels]=sort_fish(fishes,features)
 	close all
 
 	total_fishes = length(fishes);
@@ -22,12 +22,29 @@ function [labels]=sort_fish(fishes,features,fish1,fish2,feature1,feature2)
 	    end
 	end
 
-	for fe_1 = 1:4
-		for fe_2 = 1:4
-			subplot(1,4,fe_1);
-			plot(features(labels==fish1,fe_1),features(labels==fish1,fe_2),'*g');
-			hold on
-			plot(features(labels==fish2,fe_1),features(labels==fish2,fe_2),'*r');
+	for fi = 1:2
+		fi_1 = fi;
+
+		if fi_1 == 1
+			fi_2 = 2;
+		else
+			fi_2 = 1;
+		end
+
+		for fe_1 = 1:4
+			for fe_2 = 1:4
+				if ~ (fe_1 == fe_2)
+					component = fe_1;
+					if fi_2 == 1
+						component = fe_1+4;
+					end
+					subplot(1,8,component);
+
+					plot(features(labels==fi_1,fe_1),features(labels==fi_1,fe_2),'*g');
+					hold on
+					plot(features(labels==fi_2,fe_1),features(labels==fi_2,fe_2),'*r');
+				end
+			end
 		end
 	end
 end
