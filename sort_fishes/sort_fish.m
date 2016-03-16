@@ -22,28 +22,17 @@ function [labels]=sort_fish(fishes,features)
 	    end
 	end
 
-	for fi = 1:2
-		fi_1 = fi;
+	for fe_1 = 1:4
+		for fe_2 = 1:4
+			if ~ (fe_1 == fe_2)
 
-		if fi_1 == 1
-			fi_2 = 2;
-		else
-			fi_2 = 1;
-		end
+				subplot(1,4,fe_1);
 
-		for fe_1 = 1:4
-			for fe_2 = 1:4
-				if ~ (fe_1 == fe_2)
-					component = fe_1;
-					if fi_2 == 1
-						component = fe_1+4;
-					end
-					subplot(1,8,component);
-
-					plot(features(labels==fi_1,fe_1),features(labels==fi_1,fe_2),'*g');
-					hold on
-					plot(features(labels==fi_2,fe_1),features(labels==fi_2,fe_2),'*r');
-				end
+				plot(features(labels==1,fe_1),features(labels==1,fe_2),'*g');
+				hold on
+				plot(features(labels==2,fe_1),features(labels==2,fe_2),'*r');
+				hold on
+				plot(features(labels==3,fe_1),features(labels==3,fe_2),'*b');
 			end
 		end
 	end
