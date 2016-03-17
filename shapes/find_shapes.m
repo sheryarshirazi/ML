@@ -1,4 +1,4 @@
-%% diff: Categorizing shapes with its properties
+%% find_shapes: Categorizing shapes with its properties
 %  Major axis, Minor axis, area, area of bounding box
 function find_shapes(I,shape)
     close all;
