@@ -1,0 +1,5 @@
+% read image containing shapes
+I = imread('shapes.png');
+
+% Now call
+find_shapes(I,'triangle');
