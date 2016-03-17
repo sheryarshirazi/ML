@@ -4,7 +4,7 @@ function find_shapes(I,shape)
     close all;
 
     bw = ~ im2bw(I,0.99);    % convert into black and white and invert
-    symbol_labels = bwlabel(bw);
+    symbol_labels = bwlabel(bw);            % label shapes in image
     blank_img = zeros(size(symbol_labels));        % making blank image of same size
 
     symbols = regionprops(symbol_labels,{'Area','MajorAxisLength','MinorAxisLength','BoundingBox'});
