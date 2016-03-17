@@ -29,9 +29,9 @@ function [labels]=sort_fish(fishes,features,fish_1,fish_2)
 
 				subplot(1,12,counter);
 
-				plot(features(labels==fish_1,fe_1),features(labels==fish_1,fe_2),'*g');
+				plot(rand_features(labels==fish_1,fe_1),rand_features(labels==fish_1,fe_2),'*g');
 				hold on
-				plot(features(labels==fish_2,fe_1),features(labels==fish_2,fe_2),'*r');
+				plot(rand_features(labels==fish_2,fe_1),rand_features(labels==fish_2,fe_2),'*r');
 				counter = counter+1;
 			end
 		end
