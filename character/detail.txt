@@ -1,0 +1,15 @@
+bayesion
+	data ki classification
+
+priors: jo pehlay se known ho
+
+p(w1) -> prior
+
+if p(w1) > p(w2) 			%run time (class probability)
+	the given type is w1
+
+
+p(w1/x) postitior (bayesion)
+
+
+image should as png format	

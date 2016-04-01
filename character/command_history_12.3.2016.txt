@@ -1,0 +1,120 @@
+%-- 3/12/2016 9:36 AM --%
+I = imread('Alphabets.png')
+imshow(I)
+clc
+LowerCase = (13:45,1:563);
+LowerCase = I(13:45,1:563);
+ismhow(LowerCase)
+imshow(LowerCase)
+imshow(I)
+UpperCase = I(89:125,:);
+imshow(UpperrCase)
+imshow(UpperCase)
+clc
+imshow(I)
+Test_Letters = I(164:208,:);
+Test_Letters
+Test_Letters)
+imshow(Test_Letters)
+I = ~im2bw(I,0.99)
+imshow(I)
+UpperCase = I(89:125,:);
+imshow(UpperCase)
+LowerCase = I(13:45,1:563);
+imshow(LowerCase)
+Test_Letters = I(164:208,:);
+imshow(Test_Letters)
+clc
+imshow(I)
+imshow(Test_Letters)
+imshow(LowerCase)
+clc
+l_alp = regionprops(LowerCase,'Image')
+l_alp(1).Image
+imshow(l_alp(1).Image)
+clc
+for i=1:length(l_alp)
+imshow(l_alp(i).Image)
+drawnow;
+pause(3)
+end
+imshow(l_alp(i).Image);
+l_alp = regionprops(LowerCase,'Image');
+help imresize
+I = imread('rice.png');
+J = imresize(I, 0.5);
+figure, imshow(I), figure, imshow(J)
+clc
+size(I)
+size(J)
+I(end:end)=[]
+J = imresize(I, 0.5);
+a = [1 2 3  4]
+J = imresize(a, 0.5);
+J = imresize(a, 0.5)
+a = [1 2 3  4;2 3 4 5 ]
+J = imresize(a, 0.5);
+clc
+l_alp
+l_alp(1).Image
+size(l_alp(1).Image)
+clc
+size(l_alp(1).Image)
+max(ans)
+clc
+l_alp(1).Image
+size(l_alp(1).Image)
+imshow(l_alp(1).Image)
+help padarray
+A = [1 2; 3 4];
+B = [5 6; 7 8];
+C = cat(3,A,B)
+D = padarray(C,[3 3],0,'both')
+clc
+A = [1 2; 3 4]
+B = [5 6; 7 8]
+C = cat(3,A,B)
+D = padarray(A,[3 3],0,'both')
+A
+E = padarray(A,[3 0],0,'both')
+E = padarray(A,[3 0],1,'both')
+E = padarray(A,[3 0],2,'both')
+E = padarray(A,[3 0],'both')
+E = padarray(A,[3 0],'pre')
+E = padarray(A,[3 0],'post')
+clc
+l_alp(1).Image
+i =1
+Maxs = size(l_alp(i))
+l_alp(1).Image
+size(l_alp(1).Image)
+maxS=size(l_alp(1).Image)
+maxS=max(size(l_alp(1).Image))
+alp = l_alp(1).Image
+Dif = maxS - size(alp);
+Dif = maxS - size(alp)
+if rem(Dif(1), 2) == 0
+alp = padarray(alp,[Dif(1)/2 0],'both');
+else
+alp = padarray(alp,[(Dif(1)-1)/2 0],'both');
+alp = padarray(alp,[1 0],'post');
+end
+if rem(Dif(2), 2) == 0
+alp = padarray(alp,[0 Dif(2)/2],'both');
+else
+alp = padarray(alp,[0 (Dif(2)-1)/2],'both');
+alp = padarray(alp,[0 1],'post');
+end
+imshow(alp)
+alpR = imresize(alp,[40 40]);
+imshow(alpR)
+imshow(alp)
+A
+A(:)
+clc
+character_recog(I)
+imshow(I)
+clc
+I = imread('Alphabets.png')
+imshow(I)
+character_recog(I)
