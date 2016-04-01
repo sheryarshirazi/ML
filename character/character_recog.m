@@ -22,9 +22,11 @@ l_alp = regionprops(lc,'Image','FilledArea','FilledImage','BoundingBox');
 i=l_alp(10);
 i_dot=l_alp(9);
 % max(size(i.Image))
-% i_padded = normalise_image_size(i.Image,max(size(i.Image)));
-i_dot_padded = normalise_image_size(i_dot.Image,max(size(i_dot.Image)));
-imshow(i_dot_padded);
+
+i_padded = adjusti(i.Image);
+i_dot_padded = adjustidot(i_dot.Image);
+i_new = i_padded+i_dot_padded;
+imshow(i_new);
 j=l_alp(11);
 j_dot=l_alp(12);
 % imshow(j.Image);
@@ -110,3 +112,10 @@ function alp = normalise_image_size(alp,maxS)
 
     end
 
+function alp = adjusti(alp)
+    alp = padarray(alp,[10 0],'pre');
+end
+
+function alp = adjustidot(alp)
+    alp = padarray(alp,[22 0],'post');
+end
