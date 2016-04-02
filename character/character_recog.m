@@ -20,13 +20,6 @@ u_alp = regionprops(uc,'Image');
 % so we used regionprops function to separate every alphabet
 l_alp = regionprops(lc,'Image','FilledArea','FilledImage','BoundingBox','Area','MajorAxisLength','MinorAxisLength');
 
-% uni =[];
-% for i =1:length(l_alp)
-%     uni(i)=l_alp(i).MinorAxisLength*l_alp(i).MajorAxisLength;
-%     uni(i)
-% end
-% length(unique(uni))
-
 I=l_alp(10);
 I_dot=l_alp(9);
 
@@ -75,16 +68,10 @@ end
 %removing legs
 statement(to_be2) = [];
 
-% for i =1:length(statement)
-%     imshow(statement(i).Image);
-%     pause(0.5);
-% end
-
 
 % looping each of the uppercase alphabets to do following two tasks:
 % first- normalize each alphabet i.e making aspect ratio 1:1
 % second- resize the alphabet to a constant size
-% alp = u_alp;
 alp = [];
 for i =1:length(u_alp)
     u_alp(i).Image = normalise_image_size(u_alp(i).Image,max(size(u_alp(i).Image)));
@@ -102,18 +89,6 @@ for i =1:length(l_alp)
     alp(end + 1).Image = l_alp(i).Image;
 end
 
-% for i =1:length(alp)
-%     imshow(alp(i).Image);
-%     pause(0.5);
-% end
-
-
-% combining uppercase and lowercase alphabets into a single array
-% size(u_alp)
-% size(l_alp)
-% alp = [u_alp ; l_alp];
-
-
 % looping through the unknown alphabets to match each of the unknowns with the trained data
 
     for j= 1:length(statement)
@@ -130,7 +105,7 @@ end
         subplot(1,2,1); imshow(statement(j).Image)
         subplot(1,2,2); imshow(alp(midx).Image)
         drawnow
-        pause(2);
+        pause(0.5);
 
     end
 
