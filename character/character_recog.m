@@ -116,18 +116,18 @@ end
 
 % looping through the unknown alphabets to match each of the unknowns with the trained data
 
-    for j= 1:length(unknown_alp)
+    for j= 1:length(statement)
 
         % Looping through the array of trained data to get matched alphabet
         for i = 1:length(alp)
             temp = alp(i).Image;
-            temp2 = unknown_alp(j).Image;
+            temp2 = statement(j).Image;
             D(i) = sum(abs(temp(:) - temp2(:)));
         end
 
         % getting minimum distance i.e. its index and its value
         [m midx] = min(D);
-        subplot(1,2,1); imshow(unknown_alp(j).Image)
+        subplot(1,2,1); imshow(statement(j).Image)
         subplot(1,2,2); imshow(alp(midx).Image)
         drawnow
         pause(2);
