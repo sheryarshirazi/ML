@@ -18,50 +18,80 @@ u_alp = regionprops(uc,'Image');
 
 % lc is a piece of original image containing all the lower case letters
 % so we used regionprops function to separate every alphabet
-l_alp = regionprops(lc,'Image','FilledArea','FilledImage','BoundingBox','Area');
+l_alp = regionprops(lc,'Image','FilledArea','FilledImage','BoundingBox','Area','MajorAxisLength','MinorAxisLength');
 
-i=l_alp(10);
-i_dot=l_alp(9);
+% uni =[];
+% for i =1:length(l_alp)
+%     uni(i)=l_alp(i).MinorAxisLength*l_alp(i).MajorAxisLength;
+%     uni(i)
+% end
+% length(unique(uni))
 
-j=l_alp(11);
-j_dot=l_alp(12);
+I=l_alp(10);
+I_dot=l_alp(9);
 
-i_padded = adjusti(i.Image);
-i_dot_padded = adjustidot(i_dot.Image);
-i_new = i_padded+i_dot_padded;
-i_new = normalise_image_size(i_new,max(size(i_new)));
-% i_new = imresize(i_new,[40 40]);
+J=l_alp(11);
+J_dot=l_alp(12);
 
-j_padded = adjustj(j.Image);
-j_dot_padded = adjustjdot(j_dot.Image);
-j_new = j_padded+j_dot_padded;
-j_new = normalise_image_size(j_new,max(size(j_new)));
-% j_new = imresize(j_new,[40 40]);
+Idbb = I_dot.MajorAxisLength * I_dot.MinorAxisLength;
+Jdbb = J_dot.MajorAxisLength * J_dot.MinorAxisLength;
+
+I_new = adjusti(I.Image, I_dot.Image);
+J_new = adjustj(J.Image, J_dot.Image);
 
 %removing
-l_alp(9).Image=i_new;
-l_alp(10).Image=j_new;
+l_alp(9).Image=I_new;
+l_alp(10).Image=J_new;
 to_be = [11 12];
 l_alp(to_be) = [];
 
-% for i =1:length(l_alp)
-%     imshow(l_alp(i).Image);
-%     pause(1)
-% end
-
-% imshow(j.Image);
-
 % unknown_c is a piece of original image containing all the unknown letters
 % so we used regionprops function to separate every alphabet
-unknown_alp = regionprops(unknown_c,'Image');
+unknown_alp = regionprops(unknown_c,'Image','BoundingBox','MajorAxisLength','MinorAxisLength');
+statement = unknown_alp;
+test = [];
+to_be2 = [];
+inc=1;
+for i =1:length(unknown_alp)
+    temp = unknown_alp(i).MajorAxisLength * unknown_alp(i).MinorAxisLength;
+
+    if temp == Idbb
+        new_img = adjusti(unknown_alp(i+1).Image,unknown_alp(i).Image);
+        statement(i).Image = new_img;
+        % to_be2(inc) = i+1;
+        to_be2(end+1) = i+1;
+    elseif temp == Jdbb
+        new_img = adjustj(unknown_alp(i+1).Image,unknown_alp(i).Image);
+        statement(i).Image = new_img;
+        to_be2(end+1) = i+1;
+    end
+
+    statement(i).Image = normalise_image_size(statement(i).Image,max(size(statement(i).Image)));
+    statement(i).Image = imresize(statement(i).Image,[40 40]);
+    inc=inc+1;
+
+end
+
+%removing legs
+statement(to_be2) = [];
+
+% for i =1:length(statement)
+%     imshow(statement(i).Image);
+%     pause(0.5);
+% end
+
 
 % looping each of the uppercase alphabets to do following two tasks:
 % first- normalize each alphabet i.e making aspect ratio 1:1
 % second- resize the alphabet to a constant size
-% for i =1:length(u_alp)
-%     u_alp(i).Image = normalise_image_size(u_alp(i).Image,max(size(u_alp(i).Image)));
-%     u_alp(i).Image = imresize(u_alp(i).Image,[40 40]);
-% end
+% alp = u_alp;
+alp = [];
+for i =1:length(u_alp)
+    u_alp(i).Image = normalise_image_size(u_alp(i).Image,max(size(u_alp(i).Image)));
+    u_alp(i).Image = imresize(u_alp(i).Image,[40 40]);
+    alp(end + 1).Image = u_alp(i).Image;
+
+end
 
 % looping each of the lowercase alphabets to do following two tasks:
 % first- normalize each alphabet i.e making aspect ratio 1:1
@@ -69,77 +99,74 @@ unknown_alp = regionprops(unknown_c,'Image');
 for i =1:length(l_alp)
     l_alp(i).Image = normalise_image_size(l_alp(i).Image,max(size(l_alp(i).Image)));
     l_alp(i).Image = imresize(l_alp(i).Image,[40 40]);
+    alp(end + 1).Image = l_alp(i).Image;
 end
 
-% looping each of the unknown alphabets to do following two tasks:
-% first- normalize each alphabet i.e making aspect ratio 1:1
-% second- resize the alphabet to a constant size
-% for i =1:length(unknown_alp)
-%     unknown_alp(i).Image = normalise_image_size(unknown_alp(i).Image,max(size(unknown_alp(i).Image)));
-%     unknown_alp(i).Image = imresize(unknown_alp(i).Image,[40 40]);
+% for i =1:length(alp)
+%     imshow(alp(i).Image);
+%     pause(0.5);
 % end
 
 
 % combining uppercase and lowercase alphabets into a single array
-% alp = [u_alp; l_alp];
+% size(u_alp)
+% size(l_alp)
+% alp = [u_alp ; l_alp];
 
 
 % looping through the unknown alphabets to match each of the unknowns with the trained data
 
-    % for j= 1:length(unknown_alp)
+    for j= 1:length(unknown_alp)
 
-    %     % Looping through the array of trained data to get matched alphabet
-    %     for i = 1:length(alp)
-    %         temp = alp(i).Image;
-    %         temp2 = unknown_alp(j).Image;
-    %         D(i) = sum(abs(temp(:) - temp2(:)));
-    %     end
+        % Looping through the array of trained data to get matched alphabet
+        for i = 1:length(alp)
+            temp = alp(i).Image;
+            temp2 = unknown_alp(j).Image;
+            D(i) = sum(abs(temp(:) - temp2(:)));
+        end
 
-    %     % getting minimum distance i.e. its index and its value
-    %     [m midx] = min(D);
-    %     subplot(1,2,1); imshow(unknown_alp(j).Image)
-    %     subplot(1,2,2); imshow(alp(midx).Image)
-    %     drawnow
-    %     pause(2)
+        % getting minimum distance i.e. its index and its value
+        [m midx] = min(D);
+        subplot(1,2,1); imshow(unknown_alp(j).Image)
+        subplot(1,2,2); imshow(alp(midx).Image)
+        drawnow
+        pause(2);
 
-    % end
+    end
 
 end
 
 
 function alp = normalise_image_size(alp,maxS)
 
-
-        Dif = maxS - size(alp);
-        if rem(Dif(1), 2) == 0
-            alp = padarray(alp,[Dif(1)/2 0],'both');
-        else
-            alp = padarray(alp,[(Dif(1)-1)/2 0],'both');
-            alp = padarray(alp,[1 0],'post');
-        end
-
-        if rem(Dif(2), 2) == 0
-            alp = padarray(alp,[0 Dif(2)/2],'both');
-        else
-            alp = padarray(alp,[0 (Dif(2)-1)/2],'both');
-            alp = padarray(alp,[0 1],'post');
-        end
-
+    Dif = maxS - size(alp);
+    if rem(Dif(1), 2) == 0
+        alp = padarray(alp,[Dif(1)/2 0],'both');
+    else
+        alp = padarray(alp,[(Dif(1)-1)/2 0],'both');
+        alp = padarray(alp,[1 0],'post');
     end
 
-function alp = adjusti(alp)
+    if rem(Dif(2), 2) == 0
+        alp = padarray(alp,[0 Dif(2)/2],'both');
+    else
+        alp = padarray(alp,[0 (Dif(2)-1)/2],'both');
+        alp = padarray(alp,[0 1],'post');
+    end
+
+end
+
+function i = adjusti(alp, adot)
     alp = padarray(alp,[10 0],'pre');
+    adot = padarray(adot,[22 0],'post');
+    i = alp + adot;
+    i = normalise_image_size(i,max(size(i)));
 end
 
-function alp = adjustidot(alp)
-    alp = padarray(alp,[22 0],'post');
-end
-
-function alp = adjustj(alp)
+function j = adjustj(alp,adot)
     alp = padarray(alp,[10 0],'pre');
-end
-
-function alp = adjustjdot(alp)
-    alp = padarray(alp,[28 0],'post');
-    alp = padarray(alp,[0 3],'pre');
+    adot = padarray(adot,[28 0],'post');
+    adot = padarray(adot,[0 3],'pre');
+    j = alp+adot;
+    j = normalise_image_size(j,max(size(j)));
 end
