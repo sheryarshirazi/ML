@@ -1,0 +1,270 @@
+%-- 2/27/2016 10:38 AM --%
+x = [1,2,3,4]
+y = [4,6,2,7]
+sum x
+sum x/length(x)
+length x
+x
+length(x)
+mean x
+mean(x)
+x_bar =mean(x)
+x- x_bar
+xx=x- x_bar
+yy=y- y_bar
+y_bar = mean(y)
+yy=y- y_bar
+xx*yy
+(xx:)
+(xx:0)
+(xx:2)
+(xx:5)
+xx .* yy
+cls
+clc
+x = [1,2,3,4,5,6]
+y = [6,1,9,5,17,12]
+[bo,bq]=myreg(x,y)
+myreg(x,y)
+clc
+plot(x,y,'*g')
+y_new = b0+b1.*x
+[b0,b1]=myreg(x,y)
+y_new = b0+b1.*x
+[b0,b1]=myreg(x,y)
+length(x)
+length(y)
+clc
+[b0,b1]=myreg(x,y)
+plot(x,y,'*g')
+hold on
+y_new = b0+b1.*x
+plot(x,y_new,'*g')
+plot(x,y,'*g')
+plot(x,y_new,'*r')
+plot(x,y,'*g')
+hold on
+plot(x,y_new,'*r')
+plot(x,y_new,'r')
+plot(x,y,'y')
+%-- 2/28/2016 9:00 AM --%
+x = [1,2,3,4]
+y = [4,6,2,7]
+myreg(x,y,2.5)
+reg(x,y,2.5)
+myreg(x,y,2.5)
+x
+y
+myreg(x,y,3)
+x = [1,2,3,4,5,6]
+y = [6,1,9,5,17,12]
+myreg(x,y,3)
+reg(x,y,3)
+%-- 2/28/2016 10:00 AM --%
+I = imread('shapes.png')
+imshow(I)
+size(I)
+size(I) %dimension
+I(:,:,1) %accessing first matrix
+I(:,:,2) %accessing second matrix
+I(:,:,3) %accessing third matrix
+I = im2bw(I) %converting color to black and white
+imshow(I)
+I = imread('shapes.png')
+I = im2bw(I) %converting color to black and white
+imshow(I)
+I= ~I
+imshow(I)
+I
+help bw
+help bwlabel
+imshow(I)
+L = bwlabel(I)
+imshow(L)
+imshow(L=1)
+imshow(L==1)
+size(L)
+length(L)
+L
+imshow(L)
+clc
+S = regionprops(L,{'Area','MajorAxisLength','MinorAxisLength','BoundingBox'})
+S(1)
+S(1).Area
+L1 = zeros(length(L))
+imshow(L1)
+diff_shapes(I)
+diff_shapes(I,'circle')
+diff_shapes(I,'square')
+%-- 3/12/2016 9:16 AM --%
+I = imread('characters.png'); % image should be .png
+%to crop image x=col,y=row
+imshow(I)
+LowerCase = I(13:45,1:563)
+imshow(LowerCase);
+I = imread('characters.png'); % image should be .png
+imshow(I)
+LowerCase = I(13:88,1:1350)
+imshow(LowerCase);
+LowerCase = I(25:88,1:1350)
+imshow(LowerCase);
+LowerCase = I(30:88,1:1350)
+imshow(LowerCase);
+LowerCase = I(30:100,1:1350)
+imshow(LowerCase);
+imshow(I)
+UpperCase = I(30:100,1:1350)
+LowerCase = I(205:100,1:1350)
+LowerCase = I(30:205,1:1350)
+imshow(LowerCase)
+LowerCase = I(30:205,205:1350)
+imshow(LowerCase)
+imshow(I)
+LowerCase = I(204:250,1:1350)
+imshow(LowerCase)
+LowerCase = I(200:260,1:1350)
+imshow(LowerCase)
+I = ~im2bw(I,0.99)
+imshow(I)
+LowerCase = I(196:260,1:1350)
+LowerCase = I(200:260,1:1350)
+imshow(LowerCase)
+imshow(I)
+LowerCase = I(202:260,1:1350)
+LowerCase = I(202:260,1:1300)
+imshow(LowerCase)
+LowerCase = I(200:260,1:1250)
+imshow(LowerCase)
+UpperCase = I(30:100,1:1350)
+UpperCase = I(30:100,1:1300)
+imshow(UpperCase)
+imshow(I)
+Statement = I(350:400,1:1300)
+imshow(Statement)
+l_alp = regionprops(LowerCase,'image');
+l_alp = regionprops(LowerCase,'image'); % lower case object
+imgshow(l_alp(1).Image)
+imshow(l_alp(1).Image)
+u_alp = regionprops(UpperCase,'image'); % Upper case object
+s_alp = regionprops(Statement,'image'); % Test data object
+for i=1:length(l_alp)
+imshow(l_alp(i).Image)
+drawnow;
+pause(3)
+end
+imshow(I)
+%-- 3/12/2016 10:14 AM --%
+I=imread('characters.png');
+I= ~ im2bw(I,0.99);
+imshow(I)
+LowerCase = I(30:100,1:1325)
+imshow(LowerCase)
+UpperCase = I(30:100,25:1325)
+imshow(UpperCase)
+UpperCase = I(30:100,25:1330)
+imshow(UpperCase)
+UpperCase = I(30:100,25:1335)
+imshow(UpperCase)
+imshow(I)
+LowerCase = I(190:260,25:1335)
+imshow(LowerCase)
+imshow(I)
+LowerCase = I(190:260,25:1170)
+imshow(LowerCase)
+LowerCase = I(190:260,30:1170)
+imshow(LowerCase)
+LowerCase = I(190:260,35:1170)
+imshow(LowerCase)
+imshow(I)
+TestStatement = I(345:395,35:1170)
+imshow(TestStatement)
+TestStatement = I(340:425,35:1000)
+imshow(TestStatement)
+TestStatement = I(340:410,35:1000)
+imshow(TestStatement)
+TestStatement = I(345:410,35:1000)
+imshow(TestStatement)
+TestStatement = I(350:410,35:1000)
+imshow(TestStatement)
+imshow(I)
+TestStatement = I(350:410,35:427)
+imshow(TestStatement)
+u_alp = regionprops(UpperCase,'Image'); % Upper case object
+l_alp = regionprops(LowerCase,'Image'); % Lower case object
+ts_alp = regionprops(TestStatement,'Image'); % test data object
+for i=1:length(l_alp)
+imshow(l_alp(i).Image)
+drawnow;
+pause(3)
+end
+%-- 3/26/2016 9:28 AM --%
+load fisheriris
+sort_fish(species, meas, 1,2)
+%-- 4/2/2016 10:30 AM --%
+I=imread('Alphabets.png');
+character_recog(I);
+help pdist2
+%-- 4/9/2016 9:10 AM --%
+data =[10+10.*randn(100,1)+20+10.*randn(100,1)]
+[p] = k_near(data,3)
+data =[10+10.*randn(50,1)+20+10.*randn(50,1)]
+[p] = k_near(data,3)
+[p] = pargin_window(data)
+data =[10+10.*randn(100,1)+20+10.*randn(100,1)]
+[p] = pargin_window(data)
+data(:)
+data'
+data=data'
+[p] = pargin_window(data)
+data
+data=data'
+data(1)
+[p] = pargin_window(data)
+help normpdf
+[p] = pargin_window(data)
+clc
+x = [-3:.1:3];
+norm = normpdf(x,0,1);
+plot(x,norm)
+x = [1:.1:300];
+norm = normpdf(x,x(1),1);
+plot(x,norm)
+x
+x = [1:.1:50];
+plot(x,norm)
+norm = normpdf(x,0,1);
+plot(x,norm)
+x = [-10:.1:10];
+norm = normpdf(x,0,1);
+plot(x,norm)
+data =[10+10.*randn(100,1)+20+10.*randn(100,1)]
+pargin_window(data);
+data =[10+10.*randn(100,1)]
+pargin_window(data);
+data =[10+0.*randn(300,1)]
+data =[20+10.*randn(100,1)]
+pargin_window(data);
+data =[10+10.*randn(100,1)+20+10.*randn(100,1)]
+pargin_window(data);
+data =[10+10.*randn(100,1)+20+10.*randn(100,1)]
+pargin_window(data);
+data =[10+10.*randn(300,1)+20+10.*randn(300,1)]
+pargin_window(data);
+data =[10+10.*randn(300,1)+20+10.*randn(300,1)]
+pargin_window(data);
+data =[10+10.*randn(300,1)+20+10.*randn(300,1)]
+clc
+clear
+data =[10+10.*randn(300,1)+20+10.*randn(300,1)]
+pargin_window(data);
+data =[10+10.*randn(300,1)+20+10.*randn(300,1)]
+mclear(data)
+data =[10+10.*randn(300,1)+20+10.*randn(300,1)]
+pargin_window(data);
+pargin_window(data,0.1);
+clc
+clear
+data =[10+10.*randn(300,1)+20+10.*randn(300,1)]
+pargin_window(data,0.1);
+clc
+pargin_window(data,0.1);
