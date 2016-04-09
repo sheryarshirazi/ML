@@ -1,0 +1,172 @@
+%-- 4/2/2016 9:50 AM --%
+edit
+randn(10)
+randn(10,1)
+randn(1,10)
+a =randn(1,10)
+mean(a)
+a =randn(3 + 1,10)
+a =3+randn(1,10)
+a =3+2.*randn(1,10)
+plot(a)
+a =randn(1,100)
+plot(a)
+plot(a,'*r')
+plot(a,0,'*r')
+a =3+randn(1,100)
+plot(a,0,'*r')
+a =3+10.*randn(1,100)
+plot(a,0,'*r')
+clc
+a =3+10.*randn(1,300)
+clc
+size(data)
+data = a;
+size(data)
+max(data)
+min(data)
+range = max(data) - min(data)
+intervals  = r/length(data)
+intervals  = range/length(data)
+clc
+X = min(data):intervals:max(data)
+size(X)
+data
+X = min(data):intervals:max(data)
+j = 0
+j++
+j =j++
+clc
+a = 6
+b = [1 2 3 4 5 6]
+a- b
+min(ans)
+clc
+a- b
+b = [1 2 3 4 5 6]
+clc
+b = [101 2 3 4 75 61]
+a- b
+b = [101 2 3 14 75 61]
+b = [101 52 3 14 75 61]
+a- b
+clc
+b = [101 52 3 14 75 61]
+a- b
+c = a-b
+sort(c)
+d = sort(c)
+clc
+a
+b
+c
+d
+clc
+help pdsit2
+help pdist2
+clc
+pdsit2(b,a)
+pdist2(b,a,3)
+pdist2(b,a,'smallest','3')
+pdist2(b',a,'smallest','3')
+clc
+help pdist2
+help pdist
+pdist(b',a,'smallest','3')
+pdist(b,a,'smallest','3')
+clc
+pdist
+help pdist
+help pdist2
+X = randn(100, 5);
+Y = randn(25, 5);
+D = pdist2(X,Y,'euclidean');
+D
+X = randn(1, 5);
+Y = randn(5, 5);
+D = pdist2(X,Y,'euclidean')
+X
+Y
+Y = randn(1);
+D = pdist2(X,Y,'euclidean')
+D = pdist2(Y,X,'euclidean')
+size(XC)
+size(X)
+size(Y)
+D = pdist2(Y,X,'euclidean')
+D = pdist2(X,Y,'euclidean')
+Y = randn(1,5);
+D = pdist2(X,Y,'euclidean')
+Y
+D = pdist2(X,Y,'euclidean','smallest',3)
+D = pdist2(X,Y(1),'euclidean','smallest',3)
+[d index]= pdist2(data', X(i), 'euclidean', 'smallest', k);
+X
+a =randn(1,100)
+a =3+10.*randn(1,100)
+data = a;
+range = max(data) - min(data)
+intervals  = range/length(data)
+X = min(data):intervals:max(data)
+X
+[d index]= pdist2(data', X(i), 'euclidean', 'smallest', 3);
+data
+data= data'
+[d index]= pdist2(data, X(i), 'euclidean', 'smallest', 3);
+[d index]= pdist2(data', X(i), 'euclidean', 'smallest', 3);
+[d index]= pdist2(data, X(i), 'euclidean', 'smallest', 3)
+data
+[d index]= pdist2(data, 0.25, 'euclidean', 'smallest', 3)
+X(1)
+[d index]= pdist2(data, -0.25, 'euclidean', 'smallest', 3)
+[d index]= pdist2(data, X(i), 'euclidean', 'smallest', 3)
+[d index]= pdist2(data, X(1), 'euclidean', 'smallest', 3)
+clc
+[d index]= pdist2(data', X(i), 'euclidean', 'smallest', 3)
+[d index]= pdist2(data', X(1), 'euclidean', 'smallest', 3)
+[d index]= pdist2(data, X(1), 'euclidean', 'smallest', 3)
+X(1)
+data(31)
+data(71)
+data(index)
+c = data(index)
+v = max(c)- min(c)
+[d index]= pdist2(data, X(2), 'euclidean', 'smallest', 3)
+c = data(index)
+v = max(c)- min(c)
+[d index]= pdist2(data, X(2), 'euclidean', 'smallest', 3)
+X(2)
+X(3)
+X(4)
+X(6)
+[d index]= pdist2(data, X(100), 'euclidean', 'smallest', 3)
+data
+[p] = k_near(data,3)
+plot(data,0,'*r')
+hold on
+plot(p)
+clc
+figure
+figure, plot(X,p,'r')
+hold on
+plot(data,0,'*k')
+clc
+close all
+plot(data,0,'*k')
+hold on
+figure, plot(X,p,'r')
+plot(data,0,'*k')
+hold on
+plot(X,p,'r')
+data =10+randn(1,100)
+[p] = k_near(data,3)
+data =10+randn(100,1)
+[p] = k_near(data,3)
+data =10+10.*randn(100,1)
+[p] = k_near(data,3)
+data =[10+10.*randn(100,1),20+10.*randn(100,1)
+]
+data =[10+10.*randn(100,1)+20+10.*randn(100,1)
+]
+data =[10+10.*randn(100,1)+20+10.*randn(100,1)]
+[p] = k_near(data,3)
